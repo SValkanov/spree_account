@@ -1,0 +1,38 @@
+<div class='columns small-12 medium-3'>
+  <h6>
+    <%= render :partial => 'spree/shared/user_sub_menu' %>
+  </h6>
+</div>
+<div class='columns user-info small-12 medium-9'>
+  <div class='heading-2 profile-title'><%= Spree.t(:your_profile)%></div>
+  <h4 class='heading'><%= Spree.t(:personal_info)%></h4>
+  <div class='columns small-12'>
+    <strong><%= Spree.t(:contact_info)%></strong><br>
+    <%= spree_current_user.username %><br>
+    <%= spree_current_user.email %><br>
+    <%= link_to Spree.t('actions.edit'), edit_user_path(spree_current_user)%>
+    <%#= link_to Spree.t('reset_password'), edit_user_password_path(spree_current_user.id)%>
+  </div>
+  <br>
+  <h4 class='heading'><%= Spree.t(:address_info)%></h4>
+  <% if @ship_address %>
+    <div class='columns small-12 medium-6 float-left'>
+      <strong><%=Spree.t('ship_address') %></strong><br>
+      <%= @ship_address.full_name %><br>
+      <%= @ship_address.city %><br>
+      <%= @ship_address.address1 %><br>
+      <%= link_to Spree.t('actions.edit'), '/account/addresses'%>
+      <%#= link_to Spree.t('reset_password'), edit_user_password_path(spree_current_user.id)%>
+    </div>
+  <% end %>
+  <% if @bill_address %>
+    <div class='columns small-12 medium-6 float-left'>
+      <strong><%=Spree.t('bill_address') %></strong><br>
+      <%= @bill_address.full_name %><br>
+      <%= @bill_address.city %><br>
+      <%= @bill_address.address1 %><br>
+      <%= link_to Spree.t('actions.edit'), '/account/addresses' %>
+      <%#= link_to Spree.t('reset_password'), edit_user_password_path(spree_current_user.id)%>
+    </div>
+  <% end %>
+</div>

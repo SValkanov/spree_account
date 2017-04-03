@@ -1,0 +1,21 @@
+<div class='columns small-12 medium-3'>
+  <h6>
+    <%= render :partial => 'spree/shared/user_sub_menu' %>
+  </h6>
+</div>
+<div class='columns user-info small-12 medium-9'>
+  <div class='heading-2 profile-title'><%= Spree.t(:your_profile)%></div>
+  <h4 class='heading'><%= Spree.t(:personal_info)%></h4>
+  <div class='columns small-12 medium-9'>
+    <div class="panel-body-custom">
+      <%= render :partial => 'spree/shared/error_messages', locals: { target: @user } %>
+
+      <%= form_for Spree::User.new, as: @user, url: spree.user_path(@user), method: :put do |f| %>
+        <%= render partial: 'spree/shared/user_form', locals: { f: f } %>
+        <p>
+          <%= f.submit Spree.t(:update), class: 'button hollow primary' %>
+        </p>
+      <% end %>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,6 @@
+bg:
+  spree:
+    your_profile: 'Моят профил'
+    address_info: 'Адреси'
+    personal_info: 'Лична информация'
+    contact_info: 'Информация за контакт'

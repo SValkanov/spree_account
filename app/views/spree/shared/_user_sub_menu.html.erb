@@ -1,0 +1,19 @@
+<ul class='no-bullet user-sub-menu'>
+  <li <%= "class=selected" if  params[:action] == 'show'%>>
+    <%= link_to Spree.t(:your_profile), '/account' %>
+  </li>
+  <li <%= "class=selected" if  params[:action] == 'edit'%>>
+    <%= link_to Spree.t(:editing_user), edit_user_path(spree_current_user) %>
+  </li>
+  <li <%= "class=selected" if  params[:action] == 'addresses'%>>
+    <%= link_to Spree.t(:address_info), account_addresses_path %>
+  </li>
+  <li <%= "class=selected" if  params[:action] == 'orders'%>>
+    <%= link_to  Spree.t(:my_orders), account_orders_path %>
+  </li>
+
+  <!--<li <%= "class=selected" if  params[:action] == 'favorites'%>>
+    <%= link_to Spree.t(:my_favorites), '/favorite_products'%>
+  </li>-->
+
+</ul>

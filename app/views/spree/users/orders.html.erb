@@ -1,0 +1,39 @@
+<div class='columns small-12 medium-3'>
+  <h6>
+    <%= render :partial => 'spree/shared/user_sub_menu' %>
+  </h6>
+</div>
+<div class='columns user-info small-12 medium-9'>
+  <div class='heading-2 profile-title'><%= Spree.t(:your_profile)%></div>
+  <h4 class='heading'><%= Spree.t(:personal_info)%></h4>
+  <div data-hook="account_my_orders" class="account-my-orders">
+    <% if @orders.present? %>
+      <table class="table table-striped order-summary">
+        <thead class="active">
+        <tr>
+          <th class="order-number"><%= Spree::Order.human_attribute_name(:number) %></th>
+          <th class="order-date"><%= Spree.t(:date) %></th>
+          <th class="order-status"><%= Spree.t(:status) %></th>
+          <th class="order-payment-state"><%= Spree.t(:payment_state) %></th>
+          <th class="order-shipment-state"><%= Spree.t(:shipment_state) %></th>
+          <th class="order-total"><%= Spree.t(:total) %></th>
+        </tr>
+        </thead>
+        <tbody>
+        <% @orders.each do |order| %>
+          <tr>
+            <td class="order-number"><%= link_to order.number, order_url(order) %></td>
+            <td class="order-date"><%= l order.completed_at.to_date %></td>
+            <td class="order-status"><%= Spree.t("order_state.#{order.state}").titleize %></td>
+            <td class="order-payment-state"><%= Spree.t("payment_states.#{order.payment_state}").titleize if order.payment_state %></td>
+            <td class="order-shipment-state"><%= Spree.t("shipment_states.#{order.shipment_state}").titleize if order.shipment_state %></td>
+            <td class="lead text-primary order-total"><%= order.display_total %></td>
+          </tr>
+        <% end %>
+        </tbody>
+      </table>
+    <% else %>
+      <div class="alert alert-info"><%= Spree.t(:you_have_no_orders_yet) %></div>
+    <% end %>
+  </div>
+</div>

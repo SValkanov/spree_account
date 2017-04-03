@@ -1,0 +1,19 @@
+<div class='columns small-12 medium-3'>
+  <h6>
+    <%= render :partial => 'spree/shared/user_sub_menu' %>
+  </h6>
+</div>
+<div class='columns user-info small-12 medium-9'>
+  <div class='heading-2 profile-title'><%= Spree.t(:your_profile)%></div>
+  <h4 class='heading'><%= Spree.t(:personal_info)%></h4>
+  <%= render :partial => 'spree/shared/error_messages', locals: { target: @address } %>
+  <div class='columns small-12 medium-9'>
+    <%= form_for @ship_address, url: '/account/addresses', method: :put do |ship_form| %>
+      <h3 class="panel-title-custom"><%= Spree.t(:shipping_address) %></h3>
+      <div class="panel-body-custom">
+        <%= render :partial => 'spree/address/form', :locals => { :form => ship_form, :address_type => 'shipping', :address => @ship_address } %>
+      </div>
+      <%= submit_tag Spree.t(:save_and_continue), :class => 'button hollow primary' %>
+    <% end %>
+  </div>
+</div>
