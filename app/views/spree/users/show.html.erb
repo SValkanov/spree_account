@@ -25,14 +25,4 @@
       <%#= link_to Spree.t('reset_password'), edit_user_password_path(spree_current_user.id)%>
     </div>
   <% end %>
-  <% if @bill_address %>
-    <div class='columns small-12 medium-6 float-left'>
-      <strong><%=Spree.t('bill_address') %></strong><br>
-      <%= @bill_address.full_name %><br>
-      <%= @bill_address.city %><br>
-      <%= @bill_address.address1 %><br>
-      <%= link_to Spree.t('actions.edit'), '/account/addresses' %>
-      <%#= link_to Spree.t('reset_password'), edit_user_password_path(spree_current_user.id)%>
-    </div>
-  <% end %>
 </div>
